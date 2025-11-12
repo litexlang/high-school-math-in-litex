@@ -1,0 +1,818 @@
+[
+    {
+        "chapter": "1.1集合初步",
+        "term": "集合（set）",
+        "explanation": "把一些确定的对象的全体叫做集合（set），简称集．集合通常用大写字母$A$ 、 $B$ 、 $C$ .表示",
+        "litex_example": "have a, b, c set",
+        "litex_comment": "a, b, c 是集合。不能定义C作为集合，因为C是保留词表示复数。",
+        "litex_todo": ""
+    },
+    {
+        "chapter": "1.1集合初步",
+        "term": "元素（element）",
+        "explanation": "集合所含的各个对象叫做该集合的元素（element）.元素通常用小写字母α、 $b$ 、 $C$ ·表示.",
+        "litex_example": "have a set\nlet x a",
+        "litex_comment": "let关键词不检查集合a是否是非空集合。",
+        "litex_todo": ""
+    },
+    {
+        "chapter": "1.1集合初步",
+        "term": "有限集",
+        "explanation": "元素个数有限的集合称为有限集，否则就称为无限集",
+        "litex_example": "have set a = {1, 2}\nhave set b = {2, 1}\n\nprove_by_enum(x a):\n    x $in b\n\nprove_by_enum(x b):\n    x $in a\n\na = b\n",
+        "litex_comment": "have会检查a是否是非空集合，这也是have和let之间的区别。",
+        "litex_todo": ""
+    },
+    {
+        "chapter": "1.1集合初步",
+        "term": "无限集",
+        "explanation": "元素个数有限的集合称为有限集，否则就称为无限集",
+        "litex_example": "have s st $is_a_infinite_set()",
+        "litex_comment": "h存在一个无限集。我们用已知事实",
+        "litex_todo": ""
+    },
+    {
+        "chapter": "1.1集合初步",
+        "term": "空集",
+        "explanation": "不含有任何元素的集合称为空集，记作$\\varnothing$ ．引进空集是有必要的．例如，方程$x^2+1=0$ 没有实数解，我们就说它的实数解组成的集合是空集．又如，当两条直线平行时，它们没有公共点，就可说这两条直线的公共点组成的集合是空集．在以后学习交集时，我们还将进一步体会到引人空集的必要性",
+        "litex_example": "have self_defined_empty_set = {}",
+        "litex_comment": "自定义空集。",
+        "litex_todo": ""
+    },
+    {
+        "chapter": "集合的表示方法",
+        "term": "列举法",
+        "explanation": "将集合中的元素不重复地一一列举出来并写在大括号内，这种表示集合的方法叫做列举法．例如，方程$x^2-3x+2=0$ 的所有解组成的集合可以表示为{1，2}，也可以表示为{2，1}.这是因为在讨论集合时，不考虑其元素的顺序",
+        "litex_example": "have set a = {1, 2}\nhave set b = {2, 1}\n\nprove_by_enum(x a):\n    x $in b\n\nprove_by_enum(x b):\n    x $in a\n\na = b\n",
+        "litex_comment": "证明a和b是相等的集合。证明集合A和B相等，方法是集合A中的每个元素都在集合B中，集合B中的每个元素都在集合A中。如果要证明有限集合上的每个元素都有什么性质，那么我们用枚举法。枚举法对应litex的关键词prove_by_enum，它的功能是遍历涉及到的集合，对其中的元素一一对prove_by_enum的子句（相当于把每个元素代入到证明过程里运行一遍）进行执行。如果所有元素上证明过程都成立，那系统自动生成`对于任意在集合中的元素，该元素满足某某性质`。这里的情况是，我们要证明a中元素都在b里，b中元素都在a里，那么a和b就是相等的集合，最后得到结论a=b。",
+        "litex_todo": "之后可能要明确in的语义，就是x $in y 中，y要么是set, non_empty_set, finite_set, infinite_set, 要么是一个集合，否则就会报warning"
+    },
+    {
+        "chapter": "集合的表示方法",
+        "term": "描述法",
+        "explanation": "在大括号内先写出这个集合中元素的一个记号，再画一条竖线，并在竖线的右边写上集合中所有元素具有的共同特征，即 $A=\\{x\\mid x$ 满足性质$p\\:\\rangle$ 这种表示集合的方法叫做描述法．例如，方程$x^2-3x+2=0$ 的所有解组成的集合可以表示为$\\langle x\\mid x^2-3x+2=0\\rangle$ ．又如，函数$y=x$ 图像上的所有点组成的集合可以表示为$\\{(x,y)|_{y=x}\\}$",
+        "litex_example": "have set A = {x R: x^2 - 3x + 2 = 0}\n",
+        "litex_comment": "用描述法表示集合A，集合A是满足方程x^2 - 3x + 2 = 0的实数x的集合。",
+        "litex_todo": "不能表示有卡氏积的集合。{(x,y) R^2: x^2 + y^2 = 1}。可能未来用 [] 表示卡氏积"
+    },
+    {
+        "chapter": "集合的表示方法",
+        "term": "闭区间",
+        "explanation": "满足不等式$a\\leqslant x\\leqslant b$ 的全体实数$x$ 组成的集合称为一个闭区间，记作$\\begin{bmatrix}a\\:,b\\end{bmatrix}$",
+        "litex_example": "have a, b R\nhave set A = {x R: a <= x <= b}\n",
+        "litex_comment": "用描述法表示集合A，集合A是满足不等式a <= x <= b的实数x的集合。",
+        "litex_todo": ""
+    },
+    {
+        "chapter": "集合的表示方法",
+        "term": "开区间",
+        "explanation": "满足不等式$a<x<b$ 的全体实数$x$ 组成的集合称为一个开区间，记作$(a\\:,b\\:)$ .",
+        "litex_example": "have a, b R\nhave set A = {x R: a < x < b}\n",
+        "litex_comment": "用描述法表示集合A，集合A是满足不等式a < x < b的实数x的集合。",
+        "litex_todo": ""
+    },
+    {
+        "chapter": "集合的表示方法",
+        "term": "半开半闭区间",
+        "explanation": "满足不等式$a\\leqslant x<b$ 或$a<x\\leqslant b$ 的全体实数$x$ 所组成的集合称为一个半开半闭区间，分别记作$\\begin{bmatrix}a\\:,b\\:)&&&&&&&\\\\\\end{bmatrix}$ 或$(a,b]$",
+        "litex_example": "have a, b R\nhave set A = {x R: a <= x < b}\nhave set B = {x R: a < x <= b}\n",
+        "litex_comment": "用描述法表示集合A，集合A是满足不等式a <= x < b的实数x的集合。用描述法表示集合B，集合B是满足不等式a < x <= b的实数x的集合。",
+        "litex_todo": ""
+    },
+    {
+        "chapter": "集合之间的关系",
+        "term": "子集",
+        "explanation": "对于两个集合$A$ 与$B$ ，如果集合$A$ 的每个元素都是集合$B$ 的元素，那么集合$A$ 叫做集合$B$ 的子集（subset），记作$A\\subseteq B$ （或$B\\supseteq A$ )，读作“ $‘A$ 包含于B\"（或“ $^{\\cdot}B$ 包含A\")",
+        "litex_example": "prop is_subset_of(A set, B set):\n    <=>: \n        forall x A:\n            x $in B\n",
+        "litex_comment": "证明A是B的子集，即证明A中的每个元素都在B中。",
+        "litex_todo": ""
+    },
+    {
+        "chapter": "集合之间的关系",
+        "term": "真子集",
+        "explanation": "对于两个集合$A$ 与$B$ ，如果$A\\subseteq B$ ，且$B$ 中至少有一个元素不属于$A$ （即$B$ 不是$A$ 的子集)，那么称集合$A$ 是集合$B$ 的真子集(proper subset)，记作$A\\subset B$ （或$B\\supset A$ )，读作\"A真包含于B\"（或“ $^{\\cdot}B$ 真包含$A$ ”）",
+        "litex_example": "exist_prop x B st exist_item_from_B_not_in_A(A, B set):\n    not x $in A\n\nprop is_real_subset_of(A, B set):\n    forall x A: x $in B\n    $exist_item_from_A_not_in_B(A, B)\n",
+        "litex_comment": "",
+        "litex_todo": ""
+    },
+    {
+        "chapter": "集合的运算",
+        "term": "交集",
+        "explanation": "由既属于集合$A$ 又属于集合$B$ 的所有元素组成的集合，叫做集合$A$ 与$B$ 的交集（intersection），记作A∩B（读作“A 交B\"），即\n$$A\\cap B=\\langle x\\:|\\:x\\in A\\:\\text{且}x\\in B\\rangle.$$",
+        "litex_example": "have A, B set\nlet x A: x $in B\nx $in intersect(A, B)\nlet y B: y $in A\ny $in intersect(A, B)\n\nforall z intersect(A, B):\n    $item_in_intersect(z, A, B)\n    z $in A\n    z $in B\n",
+        "litex_comment": "litex内置关键词intersect表示两个集合的交集",
+        "litex_todo": ""
+    },
+    {
+        "chapter": "集合的运算",
+        "term": "并集",
+        "explanation": "由所有属于集合$A$ 或属于集合$B$ 的元素所组成的集合，叫做集合$A$ 与$B$ 的并集（union），记作$A\\cup B$ （读作“ $A$ 并B”），即\n\n$A\\cup B=\\{x\\mid x\\in A$ 或$x\\in B\\:\\rangle$",
+        "litex_example": "have A, B set\nlet x A, y B\nx $in union(A, B)\ny $in union(A, B)\n\nforall z union(A, B):\n    $item_in_union(z, A, B)\n    z $in A or z $in B\n",
+        "litex_comment": "litex内置关键词union表示两个集合的并集",
+        "litex_todo": ""
+    },
+    {
+        "chapter": "集合的运算",
+        "term": "全集",
+        "explanation": "在数学研究中，所研究的对象往往是某个确定集合的一个子集或元素．例如，求方程的实数解时，所有解组成的集合一定是实数集R的一个子集：求三角形的内角的大小时，如果以度（° 为单位，那么角的度数一定是开区间（0，180）中的一个元素；等等．这个确定的集合称为全集（universal set)，常用符号$U$ 表示它含有我们所要研究问题的全部可能的元素",
+        "litex_example": "prop p(x R)",
+        "litex_comment": "全集是一种数学对象的命名方式，即如果我们引入一个东西，这个东西是个集合，包含了所有我们可能研究的对象，那么这个东西就可以被命名成当前问题的全集。比如这里定义的proposition叫p，p只能读取实数作为参数，这里的实数集合就是我们研究p的时候的全集。",
+        "litex_todo": ""
+    },
+    {
+        "chapter": "集合的运算",
+        "term": "补集",
+        "explanation": "设$U$ 为全集， $A$ 是$U$ 的子集．由$U$ 中所有不属于A 的元素组成的集合称为集合$A$ 在全集$U$ 中的补集(complementary set)，记作$\\overline{A}$ （读作\" $“A$ 补\"），即\n\n$\\overline{A}=\\{x\\mid x\\in U$ 且$x\\notin\\mathcal{A}\\}$",
+        "litex_example": "have A, B set\nknow A $is_subset_of B\nforall z complement(A, B):\n    $item_in_complement(z, A, B)\n    z $in B\n    not z $in A\n",
+        "litex_comment": "litex内置关键词complement表示集合A在全集B中的补集",
+        "litex_todo": ""
+    },
+    {
+        "chapter": "常用逻辑用语1.2",
+        "term": "命题",
+        "explanation": "用自然语言、符号或式子表达，且可以判断其真假的语句叫做命题（proposition）.命题通常用陈述句表述.其含义判断为真的命题叫做真命题，判断为假的命题叫做假命题。",
+        "litex_example": "prop p(x R)",
+        "litex_comment": "litex内置关键词prop表示定义一个命题(proposition)的谓词，用来判断真假。命题的谓词，比如=, <, 是什么什么，这样子的用来做判断，判断结果是true或false。在litex中，命题叫做(factual statement)，结果有true, unknown（条件不足或者表示false）或者error（语法错误）。这里定义了proposition p",
+        "litex_todo": ""
+    },
+    {
+        "chapter": "常用逻辑用语1.2",
+        "term": "条件",
+        "explanation": "在形如“若α，则β”的命题中，陈述句α称为条件。",
+        "litex_example": "forall x R: x > 0 => x > -1",
+        "litex_comment": "条件在litex中也无处不在，比如forall x R: x > 0 => x > -1这里的x > 0就是条件（又称定义域domain，简写dom），x > -1就是结论。每当你要写类似如果怎么怎么，则怎么怎么，用forall关键词",
+        "litex_todo": ""
+    },
+    {
+        "chapter": "常用逻辑用语1.2",
+        "term": "结论",
+        "explanation": "在形如“若α，则β”的命题中，β称为结论。",
+        "litex_example": "forall x R: x > 0 => x > -1",
+        "litex_comment": "比如forall x R: x > 0 => x > -1这里的x > 0就是结论",
+        "litex_todo": ""
+    },
+    {
+        "chapter": "常用逻辑用语1.2",
+        "term": "推出",
+        "explanation": "如果命题“若α，则β”是真命题，那么就称α推出β，记作α⇒β（或β⇐α）。",
+        "litex_example": "forall x R: x > 0 => x > -1",
+        "litex_comment": "比如forall x R: x > 0 => x > -1是真命题，所以x是实数，搭配上x > 0能推出x > -1",
+        "litex_todo": ""
+    },
+    {
+        "chapter": "2充分条件与必要条件",
+        "term": "充分条件",
+        "explanation": "对于两个陈述句$a$ 与$\\beta$ ，如果$\\alpha{\\Rightarrow}\\beta$ ，就称$a$ 是$\\beta$ 的充分条件（sufficientcondition），亦称$\\beta$ 是$\\alpha$ 的必要条件（necessary condition).",
+        "litex_example": "forall x R: x > 0 => x > -1",
+        "litex_comment": "forall x R: x > 0 => x > -1中，x > 0是 x > -1的充分条件，x > -1是 x > 0的必要条件",
+        "litex_todo": ""
+    },
+    {
+        "chapter": "2充分条件与必要条件",
+        "term": "必要条件",
+        "explanation": "对于两个陈述句$a$ 与$\\beta$ ，如果$\\alpha{\\Rightarrow}\\beta$ ，就称$a$ 是$\\beta$ 的充分条件（sufficientcondition），亦称$\\beta$ 是$\\alpha$ 的必要条件（necessary condition).",
+        "litex_example": "forall x R: x > 0 => x > -1",
+        "litex_comment": "forall x R: x > 0 => x > -1中，x > 0是 x > -1的充分条件，x > -1是 x > 0的必要条件",
+        "litex_todo": ""
+    },
+    {
+        "chapter": "2充分条件与必要条件",
+        "term": "充分必要条件",
+        "explanation": "对于两个陈述句$\\alpha$ 与$\\beta$ ，如果既有$\\alpha{\\Rightarrow}\\beta$ ，又有$\\beta{\\Rightarrow}\\alpha$ 就称$\\alpha$ 是$\\beta$ 的充分必要条件，简称充要条件，记作$\\alpha\\Longleftrightarrow\\beta$ ，读作“ $'\\alpha$ 与$\\beta$ 等价\"或“ $'\\alpha$ 成立当且仅当$\\beta$ 成立”",
+        "litex_example": "prop p(x R)\nprop q(x R)\nknow:\n    forall x R: $p(x) => $q(x)\n    forall x R: $q(x) => $p(x)\nforall x R: $p(x) <=> $q(x)\n",
+        "litex_comment": "litex中关键词forall下面可以用<=>表示等价关系。比如这里有两个prop叫p和q，forall x R: $p(x) => $q(x)表示对于所有实数x，如果x满足p，那么x满足q。forall x R: $q(x) => $p(x)表示对于所有实数x，如果x满足q，那么x满足p。这两个是已知条件。forall x R: $p(x) <=> $q(x)表示对于所有实数x，x满足p当且仅当x满足q。",
+        "litex_todo": ""
+    },
+    {
+        "chapter": "反证法3",
+        "term": "反证法",
+        "explanation": "它首先假设结论β不成立（∴β为假)，然后经过正确的逻辑推理得出矛盾，从而说明“β为假”是不可能发生的，即结论β是正确的．这样的证明方法叫反证法。",
+        "litex_example": "prop p(x R)\nprop q(x R)\nknow forall x R: $p(x) => $q(x)\nlet x R: not $q(x)\n\nprove_by_contradiction not $p(x):\n    $p(x)\n    $q(x)\n",
+        "litex_comment": "litex中关键词prove_by_contradiction表示反证法。比如这里有两个prop叫p和q，forall x R: $p(x) => $q(x)表示对于所有实数x，如果x满足p，那么x满足q。let x R: not $q(x)表示存在一个实数x，不满足q。如果这时候x满足p，那么x满足q，这与x不满足q矛盾，所以x不满足p。",
+        "litex_todo": ""
+    },
+    {
+        "chapter": "集合的概念与表示",
+        "term": "集合",
+        "explanation": "集合是一些确定对象的全体．集合中的元素具有确定、无序、不重复的特征．常用数集有N、Z、O、R等",
+        "litex_example": "have x set\nhave y set\nx $in set\ny $in set\n",
+        "litex_comment": "litex用关键词set表示集合。have x set表示我们引入新东西x，这是一个集合。in关键词适合set配合使用的。比如x $in R是说x在集合R中，即x是一个实数。$in的第二个参数，要么是一个集合，要么是set, nonempty_set, finite_set这样的东西。注意到虽然set自己不是集合，但litex还是把x是一个集合，写成x $in set。这里的in在第二变量是集合的时候，表达在集合里。如果第二变量是set, nonempty_set, finite_set这样的东西，那么in表达是集合。",
+        "litex_todo": ""
+    },
+    {
+        "chapter": "集合的概念与表示",
+        "term": "空集",
+        "explanation": "空集是不含任何元素的集合",
+        "litex_example": "have set self_defined_empty_set = {}\nforall x obj:\n    not x $in self_defined_empty_set\nforall x obj:\n    not x $in empty_set\n",
+        "litex_comment": "litex允许用户用枚举法定义集合。比如have set one_two = {1, 2}表示我们引入新东西one_two，这是一个集合，集合里的元素是1和2。如果{}里没有东西，那就是空集了。我们这里用self_defined_empty_set表示自定义空集。empty_set表示litex内置的空集，它事实上也是用have set empty_set = {}定义的。任何对象x，都不在空集里。",
+        "litex_todo": ""
+    },
+    {
+        "chapter": "集合的概念与表示",
+        "term": "开区间",
+        "explanation": "当a、 $b\\in\\mathbf{R}$ ，且$a<b$ 时，满足$a<x<b$ 的所有实数$x$ 组成的集合记作开区间(a，b）",
+        "litex_example": "let a, b R: a < b\nhave set interval_a_b = {x R : a < x, x < b}\nforall x R: a < x, x < b => x $in interval_a_b\n",
+        "litex_comment": "开区间的定义是a < x < b，所以interval_a_b的定义是{x R : a < x, x < b}。事实上如果a < b不成立，那其实也能定义这样的集合，只不过这个集合就是空集了",
+        "litex_todo": "思考如何在kernel_lib中建立interval(a,b)和{x R: a < x, x <b}的等价性; 如何让have里也能有<这样的符号;在内核里用builtin rule检查，如果看到在判断a < b那自动判断b > a"
+    },
+    {
+        "chapter": "集合的概念与表示",
+        "term": "闭区间",
+        "explanation": "满足$\\iota\\leqslant x\\leqslant b$ 的所有实数$x$ 组成的集合记作闭区间[a，6]",
+        "litex_example": "let a, b R: a < b\nhave set closed_interval_a_b = {x R : a <= x, x <= b}\nforall x R: a < x, x < b => x $in closed_interval_a_b\n",
+        "litex_comment": "闭区间是开区间的扩展，所以闭区间的定义是开区间的定义加上等于号。",
+        "litex_todo": ""
+    },
+    {
+        "chapter": "集合的关系与运算",
+        "term": "子集关系",
+        "explanation": "子集关系可分为两类：真子集与相等的集合",
+        "litex_example": "prop self_defined_is_subset_of(x, y set):\n    forall a x:\n        a $in y\n\nlet x, y set: x $self_defined_is_subset_of y\nforall a x: a $in y\n\nlet A, B set: A $is_subset_of B\nforall a A: a $in B\nlet E, D set: E = D\n$sets_are_equal(E, D)\nforall a E: a $in D\nforall a D: a $in E\n",
+        "litex_comment": "self_defined_is_subset_of是自定义的子集关系谓词。let x, y set: x $self_defined_is_subset_of y表示x是y的子集。forall a x: a $in y表示对于所有x中的元素a，a在y中。let A, B set: A $is_subset_of B表示A是B的子集。forall a A: a $in B表示对于所有A中的元素a，a在B中。is_subset_of是litex内置的子集关系谓词，定义方式与这里的self_defined_is_subset_of一样。内置的prop sets_are_equal(E, D set)表示两个集合相等，在litex的内部定义是等价于forall a E: a $in D和forall a D: a $in E同时成立。",
+        "litex_todo": ""
+    },
+    {
+        "chapter": "2.1等式与不等式的性质",
+        "term": "等式（equality）",
+        "explanation": "用等号“ = \"把两个表达式连接起来，所得的式子称为等式（equality）",
+        "litex_example": "have a R = 2\na = 2\na > 1\n",
+        "litex_comment": "在数学中，如果两个表达式相等，那么他们意思就是表达完全一样的意思，所以他们共享所有的性质。=是litex内置的等式关系谓词。have a R = 2表示我们引入新东西a，a是一个实数，并且a等于2。a = 2表示a等于2。a > 1表示a大于1。",
+        "litex_todo": ""
+    },
+    {
+        "chapter": "2.1等式与不等式的性质",
+        "term": "方程（equation）",
+        "explanation": "含有未知数的等式称为方程（equation）",
+        "litex_example": "let a R: 2 * a + 10 = 11\n2 * a = 11 - 10 = 1\na = 1 / 2\n",
+        "litex_comment": "未知数在数学中的意思是，我们知道这个对象存在，但是不知道它的具体的取值。这里的let a R: 2 * a + 10 = 11表示我们引入新东西a，a是一个实数，并且2 * a + 10等于11。2 * a = 11 - 10 = 1表示2 * a等于11 - 10，等于1。a = 1 / 2表示a等于1 / 2。",
+        "litex_todo": ""
+    },
+    {
+        "chapter": "2.1等式与不等式的性质",
+        "term": "方程的解（solution of an equation）",
+        "explanation": "使得方程左右两边相等的未知数的值，称为方程的解（solution of an equation）",
+        "litex_example": "let a R: 2 * a + 10 = 11\n2 * a = 11 - 10 = 1\na = 1 / 2\n",
+        "litex_comment": "let a R: 2 * a + 10 = 11表示我们引入新东西a，a是一个实数，并且2 * a + 10等于11。2 * a = 11 - 10 = 1表示2 * a等于11 - 10，等于1。a = 1 / 2表示a等于1 / 2。所以a = 1 / 2是方程2 * a + 10 = 11的解。",
+        "litex_todo": ""
+    },
+    {
+        "chapter": "2.1等式与不等式的性质",
+        "term": "方程的解集（solution set of an equation）",
+        "explanation": "以方程的所有解为元素组成的集合称为方程的解集（solution set of an equation）",
+        "litex_example": "forall a R: 0 * a = 0\n",
+        "litex_comment": "forall a R: 0 * a = 0表示对于所有实数a，0 * a等于0。所以所有实数都是方程0 * a = 0的解。所以方程0 * a = 0的解集是所有实数。",
+        "litex_todo": ""
+    },
+    {
+        "chapter": "一元二次方程的解集及根与系数的关系",
+        "term": "根（root）",
+        "explanation": "一元二次方程的解习惯上叫做该方程的根（root）．如果一元二次方程的两个根相等，那么这两个根叫做重根（doubleroot） 重根在解集中只能出现一次",
+        "litex_example": "let x R: x ^ 2 = 0\nforall: x = 0 => x ^ 2 = 0\nforall y R: y != 0 => y ^ 2 > 0, y ^ 2 != 0\n",
+        "litex_comment": "x ^ 2 = 0的解是且只是0",
+        "litex_todo": ""
+    },
+    {
+        "chapter": "一元二次方程的解集及根与系数的关系",
+        "term": "重根（doubleroot）",
+        "explanation": "如果一元二次方程的两个根相等，那么这两个根叫做重根（doubleroot） 重根在解集中只能出现一次",
+        "litex_example": "let x R: x ^ 2 = 0\nforall: x = 0 => x ^ 2 = 0\nforall y R: y != 0 => y ^ 2 > 0, y ^ 2 != 0\n",
+        "litex_comment": "x = 0 是 x ^ 2 = 0的重根",
+        "litex_todo": ""
+    },
+    {
+        "chapter": "一元二次方程的解集及根与系数的关系",
+        "term": "韦达定理",
+        "explanation": "若一元二次方程$ax^2+bx+c=0(a\\neq0$ )的两个根为$x_{1}$ 、 $x_2$ ，则\n\n$$x_1+x_2=-\\frac ba,\\:x_1x_2=\\frac ca.$$",
+        "litex_example": "claim:\n    forall a, b, x R:\n        x^2 + 2 * a * x + b = 0\n        a^2 - b >= 0\n        =>:\n            or:\n                x = -a + sqrt(a^2 - b)\n                x = -a - sqrt(a^2 - b)\n    prove:\n        =:\n            sqrt(a^2 - b) * sqrt(a^2 - b)\n            sqrt(a^2 - b) ^ 2\n            a^2 - b\n        =:\n            (x + a - sqrt(a^2 - b)) * (x + a + sqrt(a^2 - b))\n            x ^ 2 + 2 * a * x + a^2 - sqrt(a^2 - b) ^ 2\n            x ^ 2 + 2 * a * x + a^2 - (a^2 - b)\n            x ^ 2 + 2 * a * x + b\n            0\n        $product_is_0_then_at_least_one_factor_is_0(x + a - sqrt(a^2 - b), x + a + sqrt(a^2 - b))\n\n        prove_in_each_case:\n            or:\n                x + a + sqrt(a^2 - b) = 0\n                x + a - sqrt(a^2 - b) = 0\n            =>:\n                or:\n                    x = -a + sqrt(a^2 - b)\n                    x = -a - sqrt(a^2 - b)\n            prove:\n                x + a + sqrt(a^2 - b) + (-a - sqrt(a^2 - b)) = 0 + (-a - sqrt(a^2 - b))\n                x = 0 + (-a - sqrt(a^2 - b))\n                x = -a - sqrt(a^2 - b)\n            prove:\n                x + a - sqrt(a^2 - b) + (-a + sqrt(a^2 - b)) = 0 + (-a + sqrt(a^2 - b))\n                x = 0 + (-a + sqrt(a^2 - b))\n                x = -a + sqrt(a^2 - b)\n",
+        "litex_comment": "",
+        "litex_todo": ""
+    },
+    {
+        "chapter": "不等式的性质",
+        "term": "不等式",
+        "explanation": "用不等号将两个表达式连接起来，就得到一个不等式(inequality)。",
+        "litex_example": "1 < 2\n2 > -1\n9 <= 9\nforall x R: x > 0 => x != 0, not x <= 0\n",
+        "litex_comment": "litex内置了不等号>, <, >=, <=，以及它们之间的关系",
+        "litex_todo": ""
+    },
+    {
+        "chapter": "不等式的性质",
+        "term": "不等号",
+        "explanation": "大于号>，小于号< ，大于等于号≥，小于等于号$S_{n}$ 都称为不等号。",
+        "litex_example": "1 < 2\n2 > -1\n9 <= 9\nforall x R: x > 0 => x != 0, not x <= 0\n",
+        "litex_comment": "litex内置了不等号>, <, >=, <=，以及它们之间的关系",
+        "litex_todo": ""
+    },
+    {
+        "chapter": "不等式的性质",
+        "term": "传递性",
+        "explanation": "设$a$ 、 $b$ 、 $C$ 均为实数，如果$a>b$ ，且$b>c$ ，那么$a>c$。",
+        "litex_example": "forall a, b, c R: a > b, b > c => a > c",
+        "litex_comment": "litex内置了常见不等号的传递性。用户也可以用prove_is_transitive_prop自己证明自己定义的prop的传递性。有了传递性后，内核会用传递性自动帮你证明。",
+        "litex_todo": ""
+    },
+    {
+        "chapter": "不等式的性质",
+        "term": "加法性质",
+        "explanation": "设$a$ 、 $b$ 、 $c$ 均为实数， 如果$a>b$ ，那么$a+c>b+c$。",
+        "litex_example": "forall a, b, c R: a > b => a + c > b + c\n",
+        "litex_comment": "know forall a, b, c R: a > b => a + c > b + c\n是litex内置代码",
+        "litex_todo": ""
+    },
+    {
+        "chapter": "不等式的性质",
+        "term": "乘法性质",
+        "explanation": "设$a$ 、 $b$ 、 $c$ 均为实数， 如果$a>b$ ，且$c>0$ ，那么$ac>bc$ ； 如果$a>b$ ，且$c<0$ ，那么$ac<bc$。",
+        "litex_example": "forall a, b, c R: a > b, c > 0 => a * c > b * c\n",
+        "litex_comment": "know forall a, b, c R: a > b, c > 0 => a * c > b * c\n是litex内置的代码",
+        "litex_todo": ""
+    },
+    {
+        "chapter": "不等式的求解",
+        "term": "解（solution of an inequality）",
+        "explanation": "在含有未知数的不等式中，能使此不等式成立的未知数的值称为该不等式的解",
+        "litex_example": "1 < 2",
+        "litex_comment": "1 是 x < 2 的解",
+        "litex_todo": ""
+    },
+    {
+        "chapter": "不等式的求解",
+        "term": "解集（solution set of an inequality）",
+        "explanation": "一个不等式的解的全体所组成的集合称为此不等式的解集",
+        "litex_example": "prop self_define_less_equal_add_cancel(x, y, z R):\n    x + z <= y + z\n    <=>:\n        x <= y\nforall x R: x <= 2 <=> $self_define_less_equal_add_cancel(x, 2, 3)\n",
+        "litex_comment": "自定义不等号的消去律，证明x + 3 <= 2 + 3 的解集是x <= 2",
+        "litex_todo": ""
+    },
+    {
+        "chapter": "不等式的求解",
+        "term": "解不等式（solve an inequality）",
+        "explanation": "求不等式解集的过程称为不等式的求解或解不等式",
+        "litex_example": "prop self_define_less_equal_add_cancel(x, y, z R):\n    x + z <= y + z\n    <=>:\n        x <= y\nforall x R: x <= 2 <=> $self_define_less_equal_add_cancel(x, 2, 3)\n",
+        "litex_comment": "这是求解不等式x + 3 <= 2 + 3 的解集是x <= 2的过程",
+        "litex_todo": ""
+    },
+    {
+        "chapter": "2一元二次不等式的求解",
+        "term": "一元二次不等式",
+        "explanation": "设$a$ 、 $b$ 、 $c$ 为实数，且$a\\neq0$ ，形如\n\n$$ax^2+bx+c>0(<0,\\geqslant0\\text{或}\\leqslant0)$$\n\n的不等式统称为一元二次不等式（quadratic inequality in one variable).",
+        "litex_example": "forall x R: x ^ 2 >= 0\n",
+        "litex_comment": "一元二次不等式x ^ 2 >= 0的解集是所有实数",
+        "litex_todo": ""
+    },
+    {
+        "chapter": "基本不等式及其应用",
+        "term": "算术平均值",
+        "explanation": "对于正数$a$ 、 $b$ ，称$\\frac{a+b}2$ 是$a$ 、 $b$ 的算术平均值(arithmetic mean)。",
+        "litex_example": "have fn arithmetic_mean(a, b R) R = (a + b) / 2",
+        "litex_comment": "定义了算术平均值函数arithmetic_mean",
+        "litex_todo": ""
+    },
+    {
+        "chapter": "基本不等式及其应用",
+        "term": "几何平均值",
+        "explanation": "对于正数$a$ 、 $b$ ，称$\\sqrt{ab}$ 是$a$ 、 $b$ 的几何平均值（geometric mean）。",
+        "litex_example": "have set R_pos = {x R: x > 0}\nforall x R_pos, y R_pos: x > 0, y > 0, x * y > 0, x * y >= 0, sqrt(x * y) > 0, sqrt(x * y) $in R_pos\nhave fn geometric_mean(a, b R_pos) R_pos = sqrt(a * b)\n",
+        "litex_comment": "定义了正实数集合R_pos，以及几何平均值函数geometric_mean",
+        "litex_todo": ""
+    },
+    {
+        "chapter": "基本不等式及其应用",
+        "term": "平均值不等式",
+        "explanation": "两个正数的算术平均值大于等于它们的几何平均值，即对于任意的正数$a$ 、 $b$ ，有$\\frac{a+b}2\\geqslant\\sqrt{ab}\\:$, 且等号当且仅当$a=b$ 时成立。",
+        "litex_example": "have set R_pos = {x R: x > 0}\nforall x R_pos, y R_pos: x > 0, y > 0, x * y > 0, x * y >= 0, sqrt(x * y) > 0, sqrt(x * y) $in R_pos\nhave fn geometric_mean(a, b R_pos) R_pos = sqrt(a * b)\nhave fn arithmetic_mean(a, b R) R = (a + b) / 2\n\nprop positive_order_preserved_by_exponent(x, y R, z N_pos):\n    x ^ z >= y ^ z\n    x >= 0\n    y >= 0\n    <=>:\n        x >= y\n\nknow forall x, y R, z N_pos: x ^ z >= y ^ z, x >= 0, y >= 0 => $positive_order_preserved_by_exponent(x, y, z)\n\nforall x, y R: x >= 0, y >= 0, x ^ 2 >= y ^ 2 => $positive_order_preserved_by_exponent(x, y, 2)\n\nprove forall a, b R_pos: geometric_mean(a, b) <= arithmetic_mean(a, b):\n    geometric_mean(a, b) ^ 2 = (sqrt(a * b)) ^ 2\n    a * b >= 0\n    (sqrt(a * b)) ^ 2 = a * b\n    arithmetic_mean(a, b) ^ 2 = ((a + b) / 2) ^ 2\n    forall x R: x ^ 2 = x * x\n    ((a + b) / 2) ^ 2 = ((a + b) / 2) * ((a + b) / 2)\n    ((a + b) / 2) * ((a + b) / 2) = (a ^ 2 + 2 * a * b + b ^ 2) / 4\n    arithmetic_mean(a, b) ^ 2 - geometric_mean(a, b) ^ 2 = (a ^ 2 + 2 * a * b + b ^ 2) / 4 - a * b = (a ^ 2 - 2 * a * b + b ^ 2) / 4 = (a - b) ^ 2 / 4\n    (a - b) ^ 2 >= 0\n    (a - b) ^ 2 / 4 >= 0\n    arithmetic_mean(a, b) ^ 2 - geometric_mean(a, b) ^ 2 >= 0\n    arithmetic_mean(a, b) ^ 2 >= geometric_mean(a, b) ^ 2\n    a > 0, b > 0\n    (a + b) > 0, (a + b) / 2 > 0\n    (a + b) / 2 >= 0\n    (a + b) / 2 = arithmetic_mean(a, b)\n    arithmetic_mean(a, b) >= 0\n    arithmetic_mean(a, b) >= 0, geometric_mean(a, b) > 0, geometric_mean(a, b) >= 0\n    $greater_equal_pow_cancel(arithmetic_mean(a, b), geometric_mean(a, b), 2)\n",
+        "litex_comment": "定义了正实数集合R_pos，以及几何平均值函数geometric_mean和算术平均值函数arithmetic_mean，以及证明平均值不等式",
+        "litex_todo": "在判断>=的时候，自动判断一下>；如果成立，那就ok；我觉得内置一下非负实数，正数，这样的集合比较好，虽然用户也能很容易自定义"
+    },
+    {
+        "chapter": "三角不等式",
+        "term": "三角不等式",
+        "explanation": "这个不等式与三角形两边之和大于第三边相似，故称为三角不等式(triangle inequality).",
+        "litex_example": "",
+        "litex_comment": "",
+        "litex_todo": ""
+    },
+    {
+        "chapter": "三角不等式",
+        "term": "三角不等式",
+        "explanation": "两个实数和的绝对值小于等于它们绝对值的和，即对于任意给定的实数$a$ 、 $b$ ，有 $\\mid a+b\\mid\\leqslant\\mid a\\mid+\\mid b\\mid$, 且等号当且仅当$ab\\geqslant0$ 时成立。",
+        "litex_example": "",
+        "litex_comment": "",
+        "litex_todo": ""
+    },
+    {
+        "chapter": "课后阅读",
+        "term": "调和平均值",
+        "explanation": "汽船上、下航行速度$v_{\\text{上}}$ 、 $v_\\text{下}{\\:}$ 的某种平均值，称为调和平均值．",
+        "litex_example": "",
+        "litex_comment": "",
+        "litex_todo": ""
+    },
+    {
+        "chapter": "课后阅读",
+        "term": "算术平均值",
+        "explanation": "汽船上、下航行速度$v_{\\text{上}}$ 、 $v_\\text{下}$ 的算术平均值 $\\frac{v_\\text{上}+v_\\text{下}}2=v_\\text{静}$ 正是汽船在静水中航行的速度。",
+        "litex_example": "",
+        "litex_comment": "",
+        "litex_todo": ""
+    },
+    {
+        "chapter": "课后阅读",
+        "term": "实数大小的比较",
+        "explanation": "$a>b\\Leftrightarrow a-b>0$ ； $a=b\\Leftrightarrow a-b=0$ ： $a<b\\Leftrightarrow a-b<0$",
+        "litex_example": "",
+        "litex_comment": "",
+        "litex_todo": ""
+    },
+    {
+        "chapter": "课后阅读",
+        "term": "等式的基本性质",
+        "explanation": "传递性如果$a=b$ ，且$b=c$ ，那么$a=c$ 加法性质如果$a=b$ ， $c\\in\\mathbb{R}$ ，那么$a+_C=b+_C$ 乘法性质如果$a=b$ ， $c\\in\\mathbb{R}$ ，那么$ac=bc$",
+        "litex_example": "",
+        "litex_comment": "",
+        "litex_todo": ""
+    },
+    {
+        "chapter": "课后阅读",
+        "term": "不等式的基本性质",
+        "explanation": "传递性如果$a>b$ ，且$b>_C$ ，那么$a>_C$ 加法性质如果$a>b$ ， $c\\in\\mathbb{R}$ ，那么$a+c>b+c$ 乘法性质如果$a>b$ ， $c>0$ ，那么$ac>bc$ ；如果$a>b$ ， $c<0$ ，那么$ac<bc$",
+        "litex_example": "",
+        "litex_comment": "",
+        "litex_todo": ""
+    },
+    {
+        "chapter": "课后阅读",
+        "term": "一元二次方程的根与系数关系",
+        "explanation": "设$ax^2+bx+c=0(a\\neq0$ 的两根为x1 $x_{1}$ $x_1、x_2$ x2 $x_2$ ，则$x_1+x_2=-\\frac ba$ ， $x_1x_2=\\frac ca$",
+        "litex_example": "",
+        "litex_comment": "",
+        "litex_todo": ""
+    },
+    {
+        "chapter": "课后阅读",
+        "term": "基本不等式",
+        "explanation": "平均值不等式$\\frac{a+b}2\\geqslant\\sqrt{ab}(a>0,\\:b>0)$ $b>0)$ b>0) ，当且仅当$a=b$ 时等号成立常用不等式$a^2+b^2\\geqslant2ab$ ，当且仅当$a=b$ 时等号成立. $\\left(\\frac{a+b}2\\right)^2\\geqslant ab$ ，当目仅当$a=b$ 时等号成立三角不等式$|\\:a+b\\:|\\leqslant|\\:a\\:|+|\\:b\\:|$ ，当且仅当$ab\\geqslant0$ 时等号成立",
+        "litex_example": "",
+        "litex_comment": "",
+        "litex_todo": ""
+    },
+    {
+        "chapter": "对数的定义",
+        "term": "对数（logarithm）",
+        "explanation": "在$a>0$ ， $a\\neq1$ ，且$N>0$ 的条件下，唯一满足$a^x=N$ 的数$x$ ，称为$N$ 以$a$ 为底的对数（logarithm），并用符号$\\log_aN$ 表示，而$N$ 称为真数。",
+        "litex_example": "",
+        "litex_comment": "",
+        "litex_todo": ""
+    },
+    {
+        "chapter": "Logarithms",
+        "term": "常用对数 (common logarithm)",
+        "explanation": "以10为底的对数称为常用对数. $\\log_{10}N$ 通常记为$\\log N$ ．在中学阶段，我们主要采用常用对数， 因为在日常生活中用的数字是十进制表示的",
+        "litex_example": "",
+        "litex_comment": "",
+        "litex_todo": ""
+    },
+    {
+        "chapter": "Logarithms",
+        "term": "自然对数 (natural logarithm)",
+        "explanation": "以无理数e(e的值约为$2.71828\\cdots)$ 为底的对数称为自然对数. $\\log_\\text{e}N$ 通常记为$\\ln N$ ．虽然自然对数在日常生活中不常使用，但在高等数学和其他科学领域中却十分有用",
+        "litex_example": "",
+        "litex_comment": "",
+        "litex_todo": ""
+    },
+    {
+        "chapter": "内容提要",
+        "term": "对数的定义",
+        "explanation": "当$a$ 是不等于1的正数， $N>0$ 时， $N$ 以$a$ 为底的对数$\\log_aN$ 是满足\n$$a^{x}=N$$\n的唯一的数$x$",
+        "litex_example": "",
+        "litex_comment": "",
+        "litex_todo": ""
+    },
+    {
+        "chapter": "内容提要",
+        "term": "对数的基本性质",
+        "explanation": "设$a$ 是不等于1的正数， $M$ 及$N$ 是任意给定的正数， $c$ 是任意给定的实数\n$$\\begin{aligned}\n&)\\:\\log_{a}1\\:=\\:0\\:; \\\\\n&)\\:\\log_{a}a=1\\:; \\\\\n&)\\:\\log_{a}(MN)=\\log_{a}M+\\log_{a}N\\:; \\\\\n&)\\:\\log_{a}\\frac{M}{N}=\\log_{a}M-\\log_{a}N\\:; \\\\\n&)\\:\\log_{a}N^{c}=c\\:\\log_{a}N\\:;\n\\end{aligned}$$",
+        "litex_example": "",
+        "litex_comment": "",
+        "litex_todo": ""
+    },
+    {
+        "chapter": "4.1幂函数",
+        "term": "幂函数",
+        "explanation": "当指数a固定，等式y=x^a确定了变量y随变量x变化的规律，称为指数为a的幂函数(power function).",
+        "litex_example": "",
+        "litex_comment": "",
+        "litex_todo": ""
+    },
+    {
+        "chapter": "4.1幂函数",
+        "term": "幂函数的定义域",
+        "explanation": "使得x^a有意义的x的取值范围，称为此幂函数的定义域幂函数的定义域可以是不相同的，它与指数a的值有关",
+        "litex_example": "",
+        "litex_comment": "",
+        "litex_todo": ""
+    },
+    {
+        "chapter": "指数函数的定义与图像",
+        "term": "指数函数",
+        "explanation": "当底数$a$ 固定，且$a>0$ ， $a\\neq1$ 时，等式\n\n$$y=a^{x}$$\n\n确定了变量$y$ 随变量$x$ 变化的规律，称为底为a的指数函数(exponential function)",
+        "litex_example": "",
+        "litex_comment": "",
+        "litex_todo": ""
+    },
+    {
+        "chapter": "指数函数的性质",
+        "term": "指数函数的单调性",
+        "explanation": "当$a>1$ 时，指数函数$y=a^x$ 在\n\nR上是严格增函数；当$0<a<1$ 时，指数函数$y=a^x$ 在$R$ 上是严格减函数.",
+        "litex_example": "",
+        "litex_comment": "",
+        "litex_todo": ""
+    },
+    {
+        "chapter": "1对数函数的定义与图像",
+        "term": "对数函数",
+        "explanation": "当底数$a$ 固定，且$a>0$ ， $a\\neq1$ 时， $x$ 以$a$ 为底的对数 $y=\\log_ax$ 确定了变量$y$ 随变量$x$ 变化的规律，称为底为$a$ 的对数函数(logarithmic function).",
+        "litex_example": "",
+        "litex_comment": "",
+        "litex_todo": ""
+    },
+    {
+        "chapter": "函数",
+        "term": "函数",
+        "explanation": "设$D$ 是一个非空的实数集，如果按照某种确定的对应关系$f$ ，使对集合$D$ 中的任意给定的$x$ ，都有唯一的实数y与之对应，就称这个对应关系$f$ 为集合$D$ 上的一个函数（function），记作\n\n$$y=f(x),\\:x\\in D.$$\n\n其中， $x$ 叫做自变量（independentvariable），其取值范围（数集$D$ )称为该函数的定义域（domain）",
+        "litex_example": "",
+        "litex_comment": "",
+        "litex_todo": ""
+    },
+    {
+        "chapter": "函数",
+        "term": "函数值",
+        "explanation": "当自变量$x$ 取值$x_0$ 时，由对应关系$f$ 所确定的对应于$x_0$ 的值$y_0$ ，称为函数在$x_0$ 处的函数值",
+        "litex_example": "",
+        "litex_comment": "",
+        "litex_todo": ""
+    },
+    {
+        "chapter": "函数",
+        "term": "值域",
+        "explanation": "所有函数值组成的集合$\\{y\\mid y=f(x)$ ， $x\\in D\\rangle$ 称为这个函数的值域（range)",
+        "litex_example": "",
+        "litex_comment": "",
+        "litex_todo": ""
+    },
+    {
+        "chapter": "函数",
+        "term": "函数的两个要素",
+        "explanation": "定义域和对应关系称为函数的两个要素",
+        "litex_example": "",
+        "litex_comment": "",
+        "litex_todo": ""
+    },
+    {
+        "chapter": "2函数的表示方法",
+        "term": "解析法",
+        "explanation": "用一个数学表达式来表示两个变量之间的对应关系，这种表示函数的方法称为解析法。",
+        "litex_example": "",
+        "litex_comment": "",
+        "litex_todo": ""
+    },
+    {
+        "chapter": "2函数的表示方法",
+        "term": "列表法",
+        "explanation": "通过列出自变量的值与对应函数值的相应表格来表达函数关系的方法称为列表法，列表法通常用在定义域为有限集的情况。",
+        "litex_example": "",
+        "litex_comment": "",
+        "litex_todo": ""
+    },
+    {
+        "chapter": "2函数的表示方法",
+        "term": "图像法",
+        "explanation": "利用函数的图像来表示函数的方法称为图像法。",
+        "litex_example": "",
+        "litex_comment": "",
+        "litex_todo": ""
+    },
+    {
+        "chapter": "2函数的表示方法",
+        "term": "分段表示法",
+        "explanation": "在用解析法表示函数时，有一些函数在不同的区间上可以有不同的表达式。这样表示函数的方法叫做分段表示法。",
+        "litex_example": "",
+        "litex_comment": "",
+        "litex_todo": ""
+    },
+    {
+        "chapter": "2函数的表示方法",
+        "term": "整数部分",
+        "explanation": "不大于$x$ 的最大整数，称为实数$x$ 的整数部分。",
+        "litex_example": "",
+        "litex_comment": "",
+        "litex_todo": ""
+    },
+    {
+        "chapter": "1函数的奇偶性",
+        "term": "偶函数",
+        "explanation": "对于函数$y=f(x)$ ，如果对于其定义域$D$ 中任意给定的实数$x$ ，都有一$-x\\in D$ ，并且\n$$f(-x)=f(x)\\:,$$\n\n就称函数${:}y=f(x)$ 为偶函数（even function)",
+        "litex_example": "",
+        "litex_comment": "",
+        "litex_todo": ""
+    },
+    {
+        "chapter": "1函数的奇偶性",
+        "term": "奇函数",
+        "explanation": "对于函数$y=f(x)$ ，如果对于其定义域$D$ 中的任意给定的实数$x$ ，都有一$\\cdot x\\in D$ ，并且\n$$f(-x)=-f(x)\\:,$$\n\n就称函数${:}y=f(x)$ 为奇函数（oddfunction）",
+        "litex_example": "",
+        "litex_comment": "",
+        "litex_todo": ""
+    },
+    {
+        "chapter": "函数的单调性",
+        "term": "增函数",
+        "explanation": "对于定义在$D$ 上的函数$y=f(x)$ ，设区间$I$ 是$D$ 的一个子集．对于区间$I$ 上的任意给定的两个自变量的值$x_{1}$ 、 $x_2$ 当$x_1<x_2$ 时，如果总有$f(x_1)\\leqslant f(x_2)\\:,$ 就称函数$y=f(x)$ 在区间$I$ 上是增函数（increasingfunction)。",
+        "litex_example": "",
+        "litex_comment": "",
+        "litex_todo": ""
+    },
+    {
+        "chapter": "函数的单调性",
+        "term": "减函数",
+        "explanation": "对于定义在$D$ 上的函数$y=f(x)$ ，设区间$I$ 是$D$ 的一个子集．对于区间$I$ 上的任意给定的两个自变量的值$x_{1}$ 、 $x_2$ 当$x_1<x_2$ 时，如果总有$f(x_1)\\geqslant f(x_2)\\:,$ 就称函数$y=f(x)$ 在区间$I$ 上是减函数（decreasingfunction）。",
+        "litex_example": "",
+        "litex_comment": "",
+        "litex_todo": ""
+    },
+    {
+        "chapter": "函数的单调性",
+        "term": "严格增函数",
+        "explanation": "对于定义在$D$ 上的函数$y=f(x)$ ，设区间$I$ 是$D$ 的一个子集．对于区间$I$ 上的任意给定的两个自变量的值$x_{1}$ 、 $x_2$ 当$x_1<x_2$ 时，如果总有$f(x_1)<f(x_2)\\:,$ 就称函数$y=f(x)$ 在区间$I$ 上是严格增函数（strictlyincreasing function)。",
+        "litex_example": "",
+        "litex_comment": "",
+        "litex_todo": ""
+    },
+    {
+        "chapter": "函数的单调性",
+        "term": "严格减函数",
+        "explanation": "对于定义在$D$ 上的函数$y=f(x)$ ，设区间$I$ 是$D$ 的一个子集．对于区间$I$ 上的任意给定的两个自变量的值$x_{1}$ 、 $x_2$ 当$x_1<x_2$ 时，如果总有$f(x_1)>f(x_2)\\:,$ 就称函数$y=f(x)$ 在区间$I$ 上是严格减函数（strictlydecreasing function)。",
+        "litex_example": "",
+        "litex_comment": "",
+        "litex_todo": ""
+    },
+    {
+        "chapter": "函数的单调性",
+        "term": "函数的单调性",
+        "explanation": "“严格增”“严格减”“增”及“减”统称为函数的单调性。",
+        "litex_example": "",
+        "litex_comment": "",
+        "litex_todo": ""
+    },
+    {
+        "chapter": "5.2(3)",
+        "term": "单调函数（monotonic function）",
+        "explanation": "如果函数$y=f(x)$ 在某个区间$I$ 上是增(减)函数， 那么就称函数$y=f\\left(x\\right)$ 在区间$I$ 上是单调函数（monotonic function），并称区间$I$ 是函数$y=f(x)$ 的一个单调区间",
+        "litex_example": "",
+        "litex_comment": "",
+        "litex_todo": ""
+    },
+    {
+        "chapter": "函数的最值3",
+        "term": "最大值与最小值统称为最值",
+        "explanation": "最大值与最小值统称为最值。",
+        "litex_example": "",
+        "litex_comment": "",
+        "litex_todo": ""
+    },
+    {
+        "chapter": "函数的最值3",
+        "term": "最小值",
+        "explanation": "函数$y=f(x)$ 在$x_{0}$ 处的函数值是$f(x_0)$ ，对于定义域内任意给定的$x$ ，如果$f(x)\\geqslant f(x_0)$都成立，那么$f(x_0$ )就叫做函数$y=f(x)$ 的最小值（minimum）。",
+        "litex_example": "",
+        "litex_comment": "",
+        "litex_todo": ""
+    },
+    {
+        "chapter": "函数的最值3",
+        "term": "最大值",
+        "explanation": "函数$y=f(x)$ 在$x_{0}$ 处的函数值是$f(x_0)$ ，对于定义域内任意给定的$x$ ，如果$f(x)\\leqslant f(x_0)$都成立，那么$f(x_0)$ 就叫做函数$y=f(x)$ 的最大值（maximum）。",
+        "litex_example": "",
+        "litex_comment": "",
+        "litex_todo": ""
+    },
+    {
+        "chapter": "用函数观点求解方程与不等式",
+        "term": "零点（zero）",
+        "explanation": "对于函数$y=f(x)$ ， $x\\in D$ ，如果存在实数$c\\in D$ ，使得$f(c)=0\\:,$ 就把$c$ 叫做该函数的零点（zero）。",
+        "litex_example": "",
+        "litex_comment": "",
+        "litex_todo": ""
+    },
+    {
+        "chapter": "反函数",
+        "term": "反函数",
+        "explanation": "对于函数$y=f(x)$ ， $x\\in D$ ，记其值域为$f(D)$ ．如果对$f(D)$ 中的任意给定的一个值$y$ ，在$D$ 中满足$f(x)=y$ 的$x$ 值只有一个，那么由此得到的$x$ 关于$y$ 的函数叫做$y=f(x)$ ， $x\\in D$ 的反函数（inversefunction），记作$x=f^{-1}(y)$ ， $y\\in f(D)$ 由于自变量习惯上常用$x$ 表示，而函数值常用$y$ 表示，因此通常把该函数改写为\n$$y=f^{-1}(x),\\:x\\in f(D).$$",
+        "litex_example": "",
+        "litex_comment": "",
+        "litex_todo": ""
+    },
+    {
+        "chapter": "函数的概念",
+        "term": "函数",
+        "explanation": "设$D$ 是一个非空的数集，如果按照某种确定的对应关系$f$ ，使对集合$D$ 中任意给定的$x$ ，都有唯一的实数$y$ 与之对应，就称这个对应关系$f$ 为集合$D$ 上的一个函数。",
+        "litex_example": "",
+        "litex_comment": "",
+        "litex_todo": ""
+    },
+    {
+        "chapter": "函数的概念",
+        "term": "定义域和对应关系",
+        "explanation": "定义域和对应关系是函数的两个重要要素．函数的值域由其定义域和对应关系决定。两个函数的定义域和对应关系都相同(形式上未必相同)时，两个函数是相同的。",
+        "litex_example": "",
+        "litex_comment": "",
+        "litex_todo": ""
+    },
+    {
+        "chapter": "函数的概念",
+        "term": "函数的图像",
+        "explanation": "函数的图像是表示函数性质的直观有力的工具。",
+        "litex_example": "",
+        "litex_comment": "",
+        "litex_todo": ""
+    },
+    {
+        "chapter": "函数的性质",
+        "term": "偶函数",
+        "explanation": "如果对定义域$D$ 中的任意给定的$x$ ，均有一$x\\in D$ ，并且$f(x)=f(-x)$ ，那么称$y=f(x)$ $x\\in D$ 是一个偶函数。",
+        "litex_example": "",
+        "litex_comment": "",
+        "litex_todo": ""
+    },
+    {
+        "chapter": "函数的性质",
+        "term": "奇函数",
+        "explanation": "如果对定义域$D$ 中的任意给定的$x$ ，均有一$x\\in D$ ，并且$f(x)=-f(-x)$ ，那么称$y=f(x)$ ， $x\\in D$ 是一个奇函数。函数的奇偶性刻画了函数图像关于原点及$y$ 轴的对称性。",
+        "litex_example": "",
+        "litex_comment": "",
+        "litex_todo": ""
+    },
+    {
+        "chapter": "函数的性质",
+        "term": "严格增函数",
+        "explanation": "对于定义在$D$ 上的函数$y=f(x)$ ，设区间$I$ 是$D$ 的子集，对于区间$I$ 上的任意给定的两个自变量的值$x_{1}$ 、 $x_2$ ，当$x_1<x_2$ 时，如果总有$f(x_1){\\leqslant}f(x_2)(f(x_1){\\leqslant}$ $f(x_2))$ ，就称函数$y=f(x)$ 在区间$I$ 上是严格增函数(增函数)。",
+        "litex_example": "",
+        "litex_comment": "",
+        "litex_todo": ""
+    },
+    {
+        "chapter": "函数的性质",
+        "term": "严格减函数",
+        "explanation": "如果总有$f(x_1)>f(x_2)$ $(f(x_1)\\geqslant f(x_2))$ ，就称函数$y=f(x$ )在区间$I$ 上是严格减函数(减函数)。这种单调性刻画了函数图像上升或下降的趋势。",
+        "litex_example": "",
+        "litex_comment": "",
+        "litex_todo": ""
+    },
+    {
+        "chapter": "函数的性质",
+        "term": "最小值",
+        "explanation": "设函数$y=f(x)$ 在$x_0$ 处的函数值是$f(x_0)$ ．对于定义域内任意给定的$x$ ，如果不等式$f(x)\\geqslant f(x_0)$ 都成立，那么$f(x_0$ )叫做函数$y=f(x)$ 的最小值。",
+        "litex_example": "",
+        "litex_comment": "",
+        "litex_todo": ""
+    },
+    {
+        "chapter": "函数的性质",
+        "term": "最大值",
+        "explanation": "如果不等式$f(x)\\leqslant f(x_0)$ 都成立，那么$f(x_0$ 叫做函数$y=f(x)$ 的最大值。最大值与最小值分别为函数图像的最高点与最低点的纵坐标。",
+        "litex_example": "",
+        "litex_comment": "",
+        "litex_todo": ""
+    },
+    {
+        "chapter": "函数的应用",
+        "term": "零点",
+        "explanation": "对于函数$y=f(x)$ ， $x\\in D$ ，若存在$c\\in D$ ，且$f(c)=0$ ，则称$c$ 是函数$y=f(x)$ ， $x\\in D$ 的一个零点。零点是指函数图像与$x$ 轴交点的横坐标。对于图像是连续曲线的函数，二分法是求近似零点的有效手段。",
+        "litex_example": "",
+        "litex_comment": "",
+        "litex_todo": ""
+    },
+    {
+        "chapter": "反函数",
+        "term": "反函数",
+        "explanation": "反函数来源于解关于$x$ 的方程$f(x)=y$ 所得到的对应关系。",
+        "litex_example": "",
+        "litex_comment": "",
+        "litex_todo": ""
+    },
+    {
+        "chapter": "反函数",
+        "term": "反函数的存在条件",
+        "explanation": "如果函数$y=f(x)$ 在定义域$D$ 上不同的$x$ 处所取到的函数值也不相同，那么$y=f(x)$ 就存在反函数，在定义域上严格单调的函数必存在反函数。",
+        "litex_example": "",
+        "litex_comment": "",
+        "litex_todo": ""
+    },
+    {
+        "chapter": "反函数",
+        "term": "反函数的图像",
+        "explanation": "函数$y=f(x)$ 的图像与其反函数$y=f^{-1}(x)$ 的图像关于直线$y=x$ 成轴对称。",
+        "litex_example": "",
+        "litex_comment": "",
+        "litex_todo": ""
+    }
+]
